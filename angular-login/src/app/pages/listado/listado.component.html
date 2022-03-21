@@ -1,0 +1,12 @@
+<!-- <div *ngFor="let item of usuarios">
+{{item.name}},<img src="{{item.image_name}}" width="10%" alt="">
+</div> -->
+<div *ngFor="let item of usuarios">
+{{item.name}}, {{item.image_name}}
+<ng-container *ngFor="let item2 of archivoImagenes(item.image_name);let i=index">
+    <img src="http://localhost:3000/images/{{item2}}" width="10%" alt="">
+
+</ng-container>
+
+</div>
+

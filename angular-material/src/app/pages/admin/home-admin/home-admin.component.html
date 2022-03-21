@@ -1,0 +1,47 @@
+<p>home-admin works!</p>
+<div class="container">
+    <div class="izq">
+        <img src="../../../../assets/images/bd.png" width="200px"  alt="">
+    </div>
+    <div class="dcha">
+        <mat-accordion>
+            
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  POST
+                </mat-panel-title>
+                <mat-panel-description>
+                  Administracion
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem"><a mat-button routerLink="altas"><mat-icon style="margin-right:10px">add</mat-icon><span>Altas</span></a></mat-list-item>
+                <mat-list-item role="listitem"><a mat-button routerLink="altas"><mat-icon style="margin-right:10px">delete</mat-icon><span>Eliminar</span></a></mat-list-item>
+                <mat-list-item role="listitem"><a mat-button routerLink="altas"><mat-icon style="margin-right:10px">edit</mat-icon><span>Modificar</span></a></mat-list-item>
+              </mat-list>
+              
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 USUARIOS
+                </mat-panel-title>
+                <mat-panel-description>
+                 Administracion
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-list role="list">
+                <mat-list-item role="listitem">Item 1</mat-list-item>
+                <mat-list-item role="listitem">Item 2</mat-list-item>
+                <mat-list-item role="listitem">Item 3</mat-list-item>
+              </mat-list>
+                          </mat-expansion-panel>
+          </mat-accordion>
+          
+{{usuario}}
+{{authService.idUsuario}}
+    </div>
+</div>

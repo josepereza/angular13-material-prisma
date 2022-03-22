@@ -1,0 +1,18 @@
+<form [formGroup]="miForm" (ngSubmit)="crearPost()">
+    <div class="row mb-3">
+        <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="title" class="form-control" id="inputTitle">
+        </div>
+      </div>
+    <div class="row mb-3">
+      <label for="inputContent" class="col-sm-2 col-form-label">Content</label>
+      <div class="col-sm-10">
+          <textarea formControlName="content" class="form-control" id="inputContent"> </textarea>
+      
+      </div>
+    </div>
+     
+   
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

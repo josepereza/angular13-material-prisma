@@ -10,4 +10,7 @@ export class PostService {
   getAllPosts(){
     return this.http.get('http://localhost:3000/posts')
   }
+  crearPost(post:any){
+    return this.http.post('http://localhost:3000/posts/crear',post)
+  }
 }

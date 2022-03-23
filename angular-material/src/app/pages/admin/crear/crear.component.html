@@ -1,18 +1,23 @@
 <form [formGroup]="miForm" (ngSubmit)="crearPost()">
-    <div class="row mb-3">
-        <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-          <input type="text" formControlName="title" class="form-control" id="inputTitle">
-        </div>
-      </div>
-    <div class="row mb-3">
-      <label for="inputContent" class="col-sm-2 col-form-label">Content</label>
-      <div class="col-sm-10">
-          <textarea formControlName="content" class="form-control" id="inputContent"> </textarea>
+  <p>
+    <mat-form-field appearance="standard">
+        
+      <mat-label>Introduce Titulo</mat-label>
+    
+      <input matInput placeholder="Title" formControlName="title">
       
-      </div>
-    </div>
-     
+      
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Introduce Content</mat-label>
+    
+      <input matInput placeholder="Content" formControlName="content">
+      
+      
+    </mat-form-field>
+  </p>
    
-    <button type="submit" class="btn btn-primary">Add</button>
+  <button mat-raised-button color="primary">Primary</button>
   </form>

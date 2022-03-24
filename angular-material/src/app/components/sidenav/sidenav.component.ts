@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
-import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+  @ViewChild('drawer') midrawer!:MatSidenav ;
 usuario:string=''
 cerrado:boolean=false
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -33,7 +34,8 @@ cerrado:boolean=false
       })
     }
 logout(){
-  this.cerrado=false
+  console.log(this.midrawer)
+ this.midrawer.close();
   this.usuario=''
   
   this.router.navigate(['home'])

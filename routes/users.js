@@ -47,13 +47,14 @@ router.post('/singup', upload.array('image',12),  async (req, res) => {
 
 router.post('/singin', async (req, res, next) => {
   const { email, password } = req.body;
-
+try {
   const user = await prisma.user.findMany({
     where: { email }
   })
 
   if (!user) {
-    throw createError.NotFound('User not registered or password error')
+   
+    res.json('error:')
   }
   // Una forma de hacerlo sin password encriptado
   // const user=await prisma.user.findMany({
@@ -76,7 +77,9 @@ router.post('/singin', async (req, res, next) => {
   
   res.json({user:user[0],token})
 
-
+}catch(err){
+  return res.send(err)
+}
 })
 
 router.get('/listado', verifyToken, async (req, res) => {

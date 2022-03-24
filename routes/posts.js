@@ -36,36 +36,20 @@ router.post('/singup',  async (req, res) => {
   res.json(usuario)
 })
 
-router.post('/crear', async (req, res, next) => {
-  const { title,content,published,authorid } = req.body;
-
-  const user = await prisma.user.findMany({
-    where: { email }
-  })
-
-  if (!user) {
-    throw createError.NotFound('User not registered or password error')
-  }
-  // Una forma de hacerlo sin password encriptado
-  // const user=await prisma.user.findMany({
-  //   where:{AND: [{email:{equals:email}},{password:{equals:password}}]} 
-  // });
-
-  // Otra forma de hacerlo sin password encriptado
-  // const user=await prisma.user.findMany({
-  //   where:{AND: [{email},{password}]} 
-  // });
-  const checkPassword = await bcrypt.compareSync(password, user[0].password)
-  if (!checkPassword) {
-    return next(createError(401, 'Please login to view this page.'))
-  }
-  delete user[0].password
-
+router.post('/crear', verifyToken, async (req, res, next) => {
+  const { title,content,authorid } = req.body;
+post={
+  title,
+  content,
+  authorid
+}
+  const responsePost = await prisma.post.create({
+    data: post })
+  
 
   
-  const token = jwt.sign(user[0], 'palabrasecreta');
-  
-  res.json({user:user[0],token})
+ 
+  res.json({responsePost})
 
 
 })

@@ -8,7 +8,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './pages/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule
   ],
   
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

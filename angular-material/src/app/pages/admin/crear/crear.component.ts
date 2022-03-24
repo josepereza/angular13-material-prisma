@@ -12,6 +12,7 @@ export class CrearComponent implements OnInit {
   miForm=this.fb.group({
     title:[''],
     content:[''],
+    published:[''],
     authorid:['']
   })
   constructor(private fb: FormBuilder, private authService:AuthService,

@@ -37,10 +37,11 @@ router.post('/singup',  async (req, res) => {
 })
 
 router.post('/crear', verifyToken, async (req, res, next) => {
-  const { title,content,authorid } = req.body;
+  const { title,content,published, authorid } = req.body;
 post={
   title,
   content,
+  published,
   authorid
 }
   const responsePost = await prisma.post.create({
@@ -66,7 +67,11 @@ function verifyToken(req, res, next) {
   if (token !== '') {
     const content = jwt.verify(token, 'palabrasecreta');
     req.data = content;
-    next()
+    console.log('mi content' ,content,token)
+    if (content){
+      next()
+    }else return 0;
+    
   }
 }
 module.exports = router;

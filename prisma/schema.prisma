@@ -12,7 +12,7 @@ model post {
   title     String   @default("") @db.VarChar(100)
   createat  DateTime @default(now()) @db.Timestamp(0)
   content   String?  @db.Text
-  published Int   @db.UnsignedInt
+  published Boolean  
   authorid  Int      @db.UnsignedInt
   user      user     @relation(fields: [authorid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_post_user")
 
